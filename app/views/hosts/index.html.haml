@@ -1,0 +1,75 @@
+/ フィルター
+:css
+  .myStyle {
+    color: red;
+  }
+:javascript
+  alert(1);
+  if (1) {
+    alert(2)
+  }
+
+/ 実体参照
+%div
+  :escaped
+    <html>
+    </html>
+
+/ rubyの式評価
+%p total is #{5 * 3}
+%p= Time.now
+- x = 5
+%p= x
+
+- (1..10).each do |i|
+  -# %p= i
+  %p{:id => "item_#{i}"} #{i}
+
+/ divの色々な書き方
+%div{:id => "main", :class => "myClass"}
+%div(id="main" class="myClass")
+%div#main.myClass
+#main.myClass
+
+#main
+  .subMenu
+
+/ %を付けると開始・終了タグが付く
+%p
+  hello
+%p hello(字下げされない)
+%ul
+  %li item
+  / 小要素の改行を無視する「<」
+  %li< item
+  %li< item
+  %li< item
+  %li< item
+/ bodyの終わり(htmlにも反映される)
+/
+複数行
+複数行
+複数行
+-# コメント(htmlには反映されない)
+-#
+コメント
+コメント
+コメント
+
+%table
+  %tr
+    %th 名前
+    %th 年齢
+    %th 備考
+  %tr
+    %th ポートフォリオ
+    %th 簡単なもの
+    %th 熱意をもって伝える、面接の話
+  %tr
+    %th コピーでなく
+    %th 独自
+    %th 簡単でいい
+  %tr
+    %th 高度でエラーが出るより
+    %th 簡単な機能でもエラーなしがいい
+    %th みじかな問題解決
